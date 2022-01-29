@@ -1,18 +1,31 @@
 package ru.netology.domine;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+
+
 public class Radio {
 
     private int currentRadioStation;
     private int currentVolume;
+    private int amountRadioStation = 10;
 
+
+    public Radio(int amountRadioStation) {
+        this.amountRadioStation = amountRadioStation;
+    }
 
     public void next() {
-        if (currentRadioStation < 9) {
+        if (currentRadioStation < amountRadioStation - 1) {
             currentRadioStation = currentRadioStation + 1;
         } else currentRadioStation = 0;
-        {
 
-        }
 
     }
 
@@ -20,16 +33,14 @@ public class Radio {
     public void prev() {
         if (currentRadioStation > 0) {
             currentRadioStation = currentRadioStation - 1;
-        } else currentRadioStation = 9;
-        {
+        } else currentRadioStation = amountRadioStation - 1;
 
-        }
 
     }
 
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < 100) {
             currentVolume = currentVolume + 1;
         }
 
@@ -43,23 +54,16 @@ public class Radio {
     }
 
 
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
-    }
-
     public void setCurrentRadioStation(int currentRadioStation) {
-        if (currentRadioStation <= 9 && currentRadioStation > 0) {
+        if (currentRadioStation < amountRadioStation && currentRadioStation > 0) {
             this.currentRadioStation = currentRadioStation;
         }
 
     }
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
 
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume <= 10 && currentVolume > 0) {
+        if (currentVolume <= 100 && currentVolume > 0) {
             this.currentVolume = currentVolume;
         }
     }
