@@ -73,25 +73,25 @@ class RadioTest {
     @Test
     public void shouldBeIncreaseCurrentVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(5);
+        radio.setCurrentVolume(45);
         radio.increaseVolume();
-        assertEquals(6, radio.getCurrentVolume());
+        assertEquals(46, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldBeDecreaseCurrentVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(3);
+        radio.setCurrentVolume(33);
         radio.decreaseVolume();
-        assertEquals(2, radio.getCurrentVolume());
+        assertEquals(32, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldBeMaxValueOfVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
@@ -105,7 +105,7 @@ class RadioTest {
     @Test
     public void shouldBeIncreaseMoreMaxValueOfVolume() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(15);
+        radio.setCurrentVolume(105);
         radio.increaseVolume();
         assertEquals(1, radio.getCurrentVolume());
     }
@@ -116,5 +116,38 @@ class RadioTest {
         radio.setCurrentVolume(-2);
         radio.decreaseVolume();
         assertEquals(0, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void nextRadioStationWithoutParameters() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(9);
+        radio.next();
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+
+    @Test
+    public void nextRadioStationWithParameters() {
+        Radio radio = new Radio(6);
+        radio.setCurrentRadioStation(5);
+        radio.next();
+        assertEquals(0, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void prevRadioStationWithoutParameters() {
+        Radio radio = new Radio();
+        radio.setCurrentRadioStation(0);
+        radio.prev();
+        assertEquals(9, radio.getCurrentRadioStation());
+    }
+
+    @Test
+    public void amountPrev1RadioStationWithParameters() {
+        Radio radio = new Radio(4);
+        radio.setCurrentRadioStation(0);
+        radio.prev();
+        assertEquals(3, radio.getCurrentRadioStation());
     }
 }
